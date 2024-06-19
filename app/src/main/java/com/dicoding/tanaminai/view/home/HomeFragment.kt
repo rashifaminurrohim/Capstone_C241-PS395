@@ -27,7 +27,7 @@ import com.dicoding.tanaminai.view.factory.MainViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.HttpException
-import java.util.Locale
+
 
 
 class HomeFragment : Fragment() {
