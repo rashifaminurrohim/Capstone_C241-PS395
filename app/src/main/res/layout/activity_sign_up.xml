@@ -112,7 +112,7 @@
         app:startIconDrawable="@drawable/icon_email"
         tools:alpha="100">
 
-        <com.dicoding.tanaminai.view.customview.PasswordEditText
+        <com.dicoding.tanaminai.view.customview.EmailEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
