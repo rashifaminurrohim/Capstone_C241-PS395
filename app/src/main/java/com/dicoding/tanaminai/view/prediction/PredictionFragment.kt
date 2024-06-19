@@ -1,6 +1,7 @@
 package com.dicoding.tanaminai.view.prediction
 
 import android.content.Intent
+import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -100,12 +101,18 @@ class PredictionFragment : Fragment() {
                     is ResultState.Success -> {
                         showLoading(false)
                         val data = resultState.data
-                        inputN = data.n.toString()
-                        inputP = data.p.toString()
-                        inputK = data.k.toString()
-                        inputHum = data.hum.toString()
-                        inputpH = data.ph.toString()
-                        inputTemp = data.temp.toString()
+                        val n = DecimalFormat("##.#").format(data.n)
+                        val p = DecimalFormat("##.#").format(data.p)
+                        val k = DecimalFormat("##.#").format(data.k)
+                        val hum = DecimalFormat("##.#").format(data.hum)
+                        val ph = DecimalFormat("##.#").format(data.ph)
+                        val temp = DecimalFormat("##.#").format(data.temp)
+                        inputN = n
+                        inputP = p
+                        inputK = k
+                        inputHum = hum
+                        inputpH = ph
+                        inputTemp = temp
                     }
 
                     is ResultState.Error -> {

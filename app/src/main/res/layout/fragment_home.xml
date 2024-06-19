@@ -162,7 +162,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="88dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/xml_refresh_soil"
                 android:textColor="@color/white"

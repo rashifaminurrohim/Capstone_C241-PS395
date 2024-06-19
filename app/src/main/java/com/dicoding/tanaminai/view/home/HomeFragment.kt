@@ -2,6 +2,7 @@ package com.dicoding.tanaminai.view.home
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.icu.text.DecimalFormat
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ import com.dicoding.tanaminai.view.factory.MainViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.HttpException
+import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -168,13 +170,20 @@ class HomeFragment : Fragment() {
                     is ResultState.Success -> {
                         showLoading(false)
                         val data = resultState.data
+                        val n = DecimalFormat("##.#").format(data.n)
+                        val p = DecimalFormat("##.#").format(data.p)
+                        val k = DecimalFormat("##.#").format(data.k)
+                        val hum = DecimalFormat("##.#").format(data.hum)
+                        val ph = DecimalFormat("##.#").format(data.ph)
+                        val temp = DecimalFormat("##.#").format(data.temp)
+
                         binding.apply {
-                            tvNitrogenValue.text = data.n.toString()
-                            tvPhosphorusValue.text = data.p.toString()
-                            tvPotassiumValue.text = data.k.toString()
-                            tvHumidityValue.text = data.hum.toString()
-                            tvPhValue.text = data.ph.toString()
-                            tvTempValue.text = data.temp.toString()
+                            tvNitrogenValue.text = n
+                            tvPhosphorusValue.text = p
+                            tvPotassiumValue.text = k
+                            tvHumidityValue.text = hum
+                            tvPhValue.text = ph
+                            tvTempValue.text = temp
                         }
                     }
 
