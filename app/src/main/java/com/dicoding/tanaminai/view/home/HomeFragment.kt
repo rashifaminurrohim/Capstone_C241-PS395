@@ -3,6 +3,7 @@ package com.dicoding.tanaminai.view.home
 import android.Manifest
 import android.content.pm.PackageManager
 import android.icu.text.DecimalFormat
+import android.icu.text.DecimalFormatSymbols
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -27,7 +28,7 @@ import com.dicoding.tanaminai.view.factory.MainViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.HttpException
-
+import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -170,12 +171,14 @@ class HomeFragment : Fragment() {
                     is ResultState.Success -> {
                         showLoading(false)
                         val data = resultState.data
-                        val n = DecimalFormat("##.#").format(data.n)
-                        val p = DecimalFormat("##.#").format(data.p)
-                        val k = DecimalFormat("##.#").format(data.k)
-                        val hum = DecimalFormat("##.#").format(data.hum)
-                        val ph = DecimalFormat("##.#").format(data.ph)
-                        val temp = DecimalFormat("##.#").format(data.temp)
+                        val decimalFormatSymbols = DecimalFormatSymbols(Locale.US)
+                        val decimalFormat = DecimalFormat("##.#", decimalFormatSymbols)
+                        val n = decimalFormat.format(data.n)
+                        val p = decimalFormat.format(data.p)
+                        val k = decimalFormat.format(data.k)
+                        val hum = decimalFormat.format(data.hum)
+                        val ph = decimalFormat.format(data.ph)
+                        val temp = decimalFormat.format(data.temp)
 
                         binding.apply {
                             tvNitrogenValue.text = n

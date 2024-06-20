@@ -2,6 +2,7 @@ package com.dicoding.tanaminai.view.prediction
 
 import android.content.Intent
 import android.icu.text.DecimalFormat
+import android.icu.text.DecimalFormatSymbols
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ import com.dicoding.tanaminai.utils.extractErrorMessage
 import com.dicoding.tanaminai.view.factory.MainViewModelFactory
 import com.dicoding.tanaminai.view.home.HomeViewModel
 import retrofit2.HttpException
+import java.util.Locale
 
 
 class PredictionFragment : Fragment() {
@@ -101,12 +103,14 @@ class PredictionFragment : Fragment() {
                     is ResultState.Success -> {
                         showLoading(false)
                         val data = resultState.data
-                        val n = DecimalFormat("##.#").format(data.n)
-                        val p = DecimalFormat("##.#").format(data.p)
-                        val k = DecimalFormat("##.#").format(data.k)
-                        val hum = DecimalFormat("##.#").format(data.hum)
-                        val ph = DecimalFormat("##.#").format(data.ph)
-                        val temp = DecimalFormat("##.#").format(data.temp)
+                        val decimalFormatSymbols = DecimalFormatSymbols(Locale.US)
+                        val decimalFormat = DecimalFormat("##.#", decimalFormatSymbols)
+                        val n = decimalFormat.format(data.n)
+                        val p = decimalFormat.format(data.p)
+                        val k = decimalFormat.format(data.k)
+                        val hum = decimalFormat.format(data.hum)
+                        val ph = decimalFormat.format(data.ph)
+                        val temp = decimalFormat.format(data.temp)
                         inputN = n
                         inputP = p
                         inputK = k
