@@ -40,10 +40,9 @@ Tanamin.ai is an application that leverages machine learning to provide personal
 ## Getting Started
 
 To get started with Tanamin.ai, follow these steps:
+ **Download the app** 
+   To install Tanamin.Ai you can download the app from the GitHub Releases page
 
  **Clone the Repository**
    ```bash
    git clone https://github.com/rashifaminurrohim/Capstone_C241-PS395.git
-
-   or you just can download the app from GitHub Release page
-
